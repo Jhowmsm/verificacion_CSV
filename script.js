@@ -13,7 +13,7 @@ function handleCSVFiles(event) {
     const reader = new FileReader();
     reader.onload = function (e) {
       const content = e.target.result;
-      const rows = content.trim().split('\n').map(row => row.split(','));
+      const rows = content.trim().split('\n').map(row => row.split('|'));
       allRows.push(...rows.slice(1)); // Ignora cabecera
       filesProcessed++;
 
