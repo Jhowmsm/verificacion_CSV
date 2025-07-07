@@ -53,7 +53,7 @@ function handleCompare() {
     const reader = new FileReader();
     reader.onload = function (e) {
       const content = e.target.result;
-      const values = content.trim().split('\n').map(row => row.split(',')[0]);
+      const values = content.trim().split('\n').map(row => row.split('|')[0]);
       compareAndDownload(inputSet, new Set(values));
     };
     reader.readAsText(comparisonFile);
