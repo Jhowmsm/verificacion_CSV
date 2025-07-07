@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <h1>Comparador de CSV</h1>
+  <h1>Comparador de CSV por columna</h1>
 
-  <label>1. Subir uno o varios CSV para procesar:</label><br>
+  <label>1. Subir uno o varios CSV para procesar (separados por "|"):</label><br>
   <input type="file" id="csvFiles" accept=".csv" multiple><br><br>
 
   <div id="columnSelector" style="display: none;">
@@ -21,7 +21,7 @@
   <input type="file" id="comparisonFile" accept=".csv"><br><br>
   <textarea id="manualData" rows="5" cols="50" placeholder="O pega los datos aquí, uno por línea..."></textarea><br><br>
 
-  <button id="compareBtn">Comparar y Descargar</button>
+  <button id="compareBtn">Comparar y Descargar CSV</button>
 
   <script src="script.js"></script>
 </body>

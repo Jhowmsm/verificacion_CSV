@@ -13,13 +13,13 @@ function handleCSVFiles(event) {
     const reader = new FileReader();
     reader.onload = function (e) {
       const content = e.target.result;
-      const rows = content.trim().split('\n').map(row => row.split('|'));
+      const rows = content.trim().split('\n').map(row => row.split('|').map(cell => cell.trim()));
       allRows.push(...rows.slice(1)); // Ignora cabecera
       filesProcessed++;
 
       if (filesProcessed === files.length) {
         mainCSVRows = allRows;
-        populateColumnSelector(rows[0]);
+        populateColumnSelector(rows[0]); // Usa cabecera para mostrar nombres
       }
     };
     reader.readAsText(file);
@@ -47,13 +47,13 @@ function handleCompare() {
 
   const comparisonFile = document.getElementById('comparisonFile').files[0];
   const manualText = document.getElementById('manualData').value.trim();
-  const inputSet = new Set(mainCSVRows.map(row => row[selectedIndex]));
+  const inputSet = new Set(mainCSVRows.map(row => row[selectedIndex].trim()));
 
   if (comparisonFile) {
     const reader = new FileReader();
     reader.onload = function (e) {
       const content = e.target.result;
-      const values = content.trim().split('\n').map(row => row.split('|')[0]);
+      const values = content.trim().split('\n').map(row => row.split('|')[0].trim());
       compareAndDownload(inputSet, new Set(values));
     };
     reader.readAsText(comparisonFile);

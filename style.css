@@ -11,6 +11,11 @@ h1 {
 input, select, textarea, button {
   margin-top: 10px;
   font-size: 16px;
+  max-width: 100%;
+}
+
+textarea {
+  width: 100%;
 }
 
 button {
